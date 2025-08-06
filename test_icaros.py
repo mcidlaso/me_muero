@@ -34,9 +34,9 @@ def diffusion_band_2(kdst   : pd.DataFrame,
     bottom_fit  = fit(polynom, bin_centers, bottom, seed = (0, 1))
 
 
-    mask        = (f_up.fn(df.DT) > Zrms2) & (f_down.fn(df.DT) < Zrms2)
+    mask        = (top_fit.fn(kdst.DT) > kdst.Zrms**2) & (bottom_fit.fn(kdst.DT) < kdst.Zrms**2)
 
-    return df[mask]
+    return kdst[mask]
 
 
 def test_diffusion_band():
